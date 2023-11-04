@@ -12,7 +12,7 @@ const LandingPage=()=>{
     }
     return (
     <div className="flex flex-col items-center justify-center h-screen">
-        <h1 className="text-3xl"><i>Welcome to Dynamic Form generater</i></h1>
+        <h1 className="text-3xl"><i>Welcome to Dynamic Form generator</i></h1>
         <button className="bg-purple-700 p-2 rounded-md my-20 text-white" onClick={()=>{setShowInput(true)}}>Create Form</button>
 
             {showInput &&<div className="flex gap-4">

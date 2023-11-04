@@ -21,18 +21,11 @@ function CreateFormPage() {
 
     const btnClickHandler=(field)=>{
         setHideBtns(true);
-        
-        if(field==='Text'){ 
-            setIsRangable(true)
-        }
-        else if(field==='dropdown'){
+        if(field==='dropdown'){
             setShowDropDown(true);
         }
         else if(field==='button'){
             setHideRequired(true);
-        }
-        else{
-            setShowDropDown(false)
         }
         setFieldName(field);
         
@@ -81,7 +74,6 @@ function CreateFormPage() {
         resetAll();
     }
     const deleteHandler=(id)=>{
-        alert(id);
         const newDomElements=domElements.filter((element)=>id!=element.id);
         setDomElements(newDomElements);
     }
@@ -89,13 +81,12 @@ function CreateFormPage() {
         console.log(JSON.stringify(domElements));
         localStorage.setItem('formConfig',JSON.stringify(domElements));
     }
-    console.log("the dom elements are ",domElements);
   return (
     <div>
         {/* option buttons*/}
         {!hideBtns && <div className='flex flex-wrap justify-around mt-3'>
             {listOfElemnts.map(element=>
-            <ElementOptionBtn label={element} onSelect={btnClickHandler} type={element}></ElementOptionBtn>)}
+            <ElementOptionBtn label={element} onSelect={btnClickHandler} type={element} key={element}></ElementOptionBtn>)}
         </div>}
 
         {/** Attributes collection form*/}
@@ -127,7 +118,7 @@ function CreateFormPage() {
                     <input type='checkbox' id="required" onChange={onChangeHandler}/>
                 </div>}
 
-                <div className='flex justify-between my-4'>
+                <div className='flex justify-evenly my-4'>
                     <button id="apply" className='bg-green-700 text-white p-2 rounded-sm'onClick={applyHandler} >Apply</button>
                     <button id="cancel" className='bg-red-700 text-white p-2 rounded-sm' onClick={cancelHandler}>Cancel</button>
                 </div>
