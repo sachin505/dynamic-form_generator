@@ -99,16 +99,18 @@ function CreateFormPage() {
 
                   {showDrpDown && <div className='flex justify-center gap-2'>
                     <label>Enter your Options for dropdown</label>
-                    <div className='flex-col'>
+                    <div className='flex-col gap-4'>
+                        <form onSubmit={(event)=>event.preventDefault()}>
                         <input type='text' id="option" onBlur={addOptionToList} className='border border-gray-300 p-1'/>
                         <ul>
                             {optionList.map((option)=>
-                                <span className='flex gap-2 justify-center text-lg'>
+                                <span className='flex gap-2 items-center text-lg'>
                                     <li>{option}</li>
-                                    <MdDelete onClick={()=>{deleteOptionHandler(option)}}/>
+                                    <MdDelete onClick={()=>{deleteOptionHandler(option)}} />
                                 </span>
                             )}
                         </ul>
+                        </form>
                     </div>
                 </div>  
                 }
@@ -118,7 +120,7 @@ function CreateFormPage() {
                     <input type='checkbox' id="required" onChange={onChangeHandler}/>
                 </div>}
 
-                <div className='flex justify-evenly my-4'>
+                <div className='flex items-center justify-center gap-10 my-4'>
                     <button id="apply" className='bg-green-700 text-white p-2 rounded-sm'onClick={applyHandler} >Apply</button>
                     <button id="cancel" className='bg-red-700 text-white p-2 rounded-sm' onClick={cancelHandler}>Cancel</button>
                 </div>
